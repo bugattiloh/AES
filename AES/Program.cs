@@ -6,8 +6,7 @@ namespace AES
 {
     class Program
     {
-       
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var aes = new MyAes();
             var plaintext = Console.ReadLine();

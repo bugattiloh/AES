@@ -26,7 +26,7 @@ namespace AES
             return res;
         }
 
-        public String Decrypt(string str)
+        public string Decrypt(string str)
         {
             var decryptor = _provider.CreateDecryptor();
 
