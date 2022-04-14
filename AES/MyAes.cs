@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,24 +18,25 @@ namespace AES
             _provider.Padding = PaddingMode.PKCS7;
         }
 
-        public string Encrypt(string str)
+        public void Encrypt()
         {
             var encryptor = _provider.CreateEncryptor();
 
-            var encryptedStrToByte = encryptor.TransformFinalBlock(Encoding.ASCII.GetBytes(str), 0, str.Length);
-            var res = Convert.ToBase64String(encryptedStrToByte);
-            return res;
+            var pngToBytes = File.ReadAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\source\\Jessei.png");
+            var encryptedStrToByte = encryptor.TransformFinalBlock(pngToBytes, 0, pngToBytes.Length);
+
+            File.WriteAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Encrypted\\EncryptedJessei.png",
+                encryptedStrToByte);
         }
 
-        public string Decrypt(string str)
+        public void Decrypt()
         {
             var decryptor = _provider.CreateDecryptor();
 
-            var encryptedStrToByte = Convert.FromBase64String(str);
-            var decryptedBytes = decryptor.TransformFinalBlock(encryptedStrToByte, 0, encryptedStrToByte.Length);
+            var pngToBytes = File.ReadAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Encrypted\\EncryptedJessei.png");
+            var decryptedBytes = decryptor.TransformFinalBlock(pngToBytes, 0, pngToBytes.Length);
 
-            var res = Encoding.ASCII.GetString(decryptedBytes);
-            return res;
+            File.WriteAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Decrypted\\DecryptedJessei.png", decryptedBytes);
         }
     }
 }
