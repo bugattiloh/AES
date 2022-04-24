@@ -22,10 +22,10 @@ namespace AES
         {
             var encryptor = _provider.CreateEncryptor();
 
-            var pngToBytes = File.ReadAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\source\\Jessei.png");
+            var pngToBytes = File.ReadAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\source\\test.jpg");
             var encryptedStrToByte = encryptor.TransformFinalBlock(pngToBytes, 0, pngToBytes.Length);
 
-            File.WriteAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Encrypted\\EncryptedJessei.png",
+            File.WriteAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Encrypted\\EncryptedTest.jpg",
                 encryptedStrToByte);
         }
 
@@ -33,10 +33,10 @@ namespace AES
         {
             var decryptor = _provider.CreateDecryptor();
 
-            var pngToBytes = File.ReadAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Encrypted\\EncryptedJessei.png");
+            var pngToBytes = File.ReadAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Encrypted\\EncryptedTest.jpg");
             var decryptedBytes = decryptor.TransformFinalBlock(pngToBytes, 0, pngToBytes.Length);
 
-            File.WriteAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Decrypted\\DecryptedJessei.png", decryptedBytes);
+            File.WriteAllBytes("C:\\Users\\1255968\\Desktop\\AES\\AES\\Decrypted\\DecryptedTest.jpg", decryptedBytes);
         }
     }
 }

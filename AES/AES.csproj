@@ -8,7 +8,6 @@
     <ItemGroup>
       <Folder Include="Decrypted" />
       <Folder Include="Encrypted" />
-      <Folder Include="result" />
       <Folder Include="source" />
     </ItemGroup>
 
